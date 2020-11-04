@@ -10,16 +10,26 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    private static final String[] PUBLIC_MATCHERS = {
+            "/",
+            "/kontakt",
+            "/login",
+            "/zdjecia/**",
+            "/img/**",
+            "/css/**",
+            "/js/**"
+    };
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/kontakt","/login","/zdjecia/**").permitAll()
+                .antMatchers(PUBLIC_MATCHERS).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login.html")
-                .failureUrl("/login-error.html")
+                .loginPage("/login")
+                .failureUrl("/login-error")
                 .permitAll();
     }
 
@@ -31,8 +41,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .roles("USER");
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("../img/**", "../css/**");
-    }
 }
