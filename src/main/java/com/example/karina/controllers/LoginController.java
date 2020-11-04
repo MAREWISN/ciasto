@@ -15,15 +15,18 @@ public class LoginController {
         this.userRepository = userRepository;
     }
 
-    @RequestMapping("/login")
+    @RequestMapping(path={"/login.html","/login"})
     public String login(){
         return "login";
     }
 
-    @RequestMapping("/login-error")
+    @RequestMapping(path={"/login-error.html","/login-error"})
     public String loginError(Model model){
         boolean loginError = true;
         model.addAttribute("loginError", loginError);
         return "login";
     }
+
+
+
 }
