@@ -20,6 +20,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/css/**",
             "/js/**"
     };
+    //TODO
+    //FIXME repair login page
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
