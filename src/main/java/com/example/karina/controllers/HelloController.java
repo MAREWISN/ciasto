@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -18,7 +19,7 @@ public class HelloController {
         this.postRepository = postRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping(path={"/","index"})
     public String index(Model model) {
         addPosts(model);
         return "index";
@@ -29,11 +30,4 @@ public class HelloController {
         model.addAttribute("posts", posts);
     }
 
-    @RequestMapping("/success")
-    public String success(Model model){
-        addPosts(model);
-        boolean admin = true;
-        model.addAttribute("admin", admin);
-        return "index";
-    }
 }

@@ -14,7 +14,8 @@ public class LoginController {
     public LoginController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
+    //TODO
+    //jeśli jest zalogowany, to trzeba zmienić page na logout
     @RequestMapping(path={"/login.html","/login"})
     public String login(){
         return "login";
