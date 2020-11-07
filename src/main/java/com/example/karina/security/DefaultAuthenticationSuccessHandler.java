@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@Component("authenticationSuccessHandler")
-public class AuthenticationSuccessHandler  implements org.springframework.security.web.authentication.AuthenticationSuccessHandler {
+@Component("defaultAuthenticationSuccessHandler")
+public class DefaultAuthenticationSuccessHandler implements org.springframework.security.web.authentication.AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         HttpSession session = httpServletRequest.getSession(false);
-        if (session != null){
+        if (session != null) {
             session.setAttribute("admin", true);
+            session.setAttribute("logged", true);
             httpServletResponse.sendRedirect("/");
         }
     }
