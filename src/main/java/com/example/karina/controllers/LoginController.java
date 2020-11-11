@@ -21,12 +21,10 @@ import java.util.List;
 
 @Controller
 public class LoginController {
-    private final UserRepository userRepository;
     private final PostRepository postRepository;
 
     public LoginController(PostRepository postRepository, UserRepository userRepository) {
         this.postRepository = postRepository;
-        this.userRepository = userRepository;
     }
     @RequestMapping(path={"/login.html","/login"})
     public String login(HttpServletRequest request, HttpServletResponse response, Model model) throws ServletException, IOException {
