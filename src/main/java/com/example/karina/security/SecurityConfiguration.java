@@ -1,6 +1,6 @@
 package com.example.karina.security;
 
-import com.example.karina.users.DefaultUserDetailsService;
+import com.example.karina.services.DefaultUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,9 +47,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     };
 
-    private static final String[] ADMIN_RESOURCES = {
-            "/admin/**"
-    };
+//    private static final String[] ADMIN_RESOURCES = {
+//            "/admin/**"
+//    };
 
     private static final String[] RESOURCES = {
             "/img/**",
@@ -65,7 +65,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .mvcMatchers(HttpMethod.GET, PUBLIC_MATCHERS).permitAll()
                 .mvcMatchers(HttpMethod.POST, POST_MATCHERS).permitAll()
-                .mvcMatchers(ADMIN_RESOURCES).hasRole("ADMIN")
+//                .mvcMatchers(ADMIN_RESOURCES).hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -85,10 +85,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         web.ignoring().mvcMatchers(RESOURCES);
     }
 
-    //TODO POLACZENIE Z BAZA DANYCH
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication().withUser("karina").password("{noop}pass").roles("ADMIN");
             auth.userDetailsService(userDetailsService)
                     .passwordEncoder(passwordEncoder())
                     .and()

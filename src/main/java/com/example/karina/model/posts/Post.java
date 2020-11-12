@@ -1,4 +1,6 @@
-package com.example.karina.posts;
+package com.example.karina.model.posts;
+
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -9,6 +11,8 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotNull
+    @Column(unique = true)
     private String title;
     private String description;
     private LocalDate postDate;

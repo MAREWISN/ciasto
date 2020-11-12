@@ -1,4 +1,4 @@
-package com.example.karina.users;
+package com.example.karina.model.users;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,22 +1,20 @@
 package com.example.karina.controllers;
 
-import com.example.karina.posts.Post;
-import com.example.karina.posts.PostRepository;
+import com.example.karina.model.posts.Post;
+import com.example.karina.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
 public class HelloController {
 
-    private final PostRepository postRepository;
+    private final PostService postService;
 
-    public HelloController(PostRepository postRepository) {
-        this.postRepository = postRepository;
+    public HelloController(PostService postService) {
+        this.postService = postService;
     }
 
     @GetMapping(path={"/","index"})
@@ -26,7 +24,7 @@ public class HelloController {
     }
 
     private void addPosts(Model model){
-        List<Post> posts = postRepository.findAll();
+        List<Post> posts = postService.getAllPosts();
         model.addAttribute("posts", posts);
     }
 

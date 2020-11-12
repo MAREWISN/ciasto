@@ -1,4 +1,4 @@
-package com.example.karina.users;
+package com.example.karina.model.users;
 
 import com.sun.istack.NotNull;
 

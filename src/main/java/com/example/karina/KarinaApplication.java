@@ -1,20 +1,27 @@
 package com.example.karina;
 
-import com.example.karina.users.Role;
-import com.example.karina.users.User;
-import com.example.karina.users.UserRepository;
-import org.springframework.boot.ApplicationRunner;
+import com.example.karina.services.storage.StorageProperties;
+import com.example.karina.services.storage.StorageService;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
-import java.util.stream.Stream;
-
 @SpringBootApplication
+@EnableConfigurationProperties(StorageProperties.class)
 public class KarinaApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(KarinaApplication.class, args);
     }
 
+
+//    @Bean
+//    CommandLineRunner init(StorageService storageService) {
+//        return (args) -> {
+//            storageService.deleteAll();
+//            storageService.init();
+//        };
+//    }
 }

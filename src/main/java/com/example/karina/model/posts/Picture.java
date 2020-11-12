@@ -1,16 +1,19 @@
-package com.example.karina.posts;
+package com.example.karina.model.posts;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.sun.istack.NotNull;
+
+import javax.persistence.*;
 
 @Entity
 public class Picture {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotNull
+    @Column(unique = true)
     private String name;
+    @NotNull
+    @Column(unique = true)
     private String url;
 
     public Long getId() {

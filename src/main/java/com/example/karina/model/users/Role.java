@@ -1,4 +1,4 @@
-package com.example.karina.users;
+package com.example.karina.model.users;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
