@@ -37,7 +37,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/",
             "/kontakt",
             "/login",
-            "/zdjecia/**"
+            "/zdjecia/**",
+            "/img/**"
 
     };
 
